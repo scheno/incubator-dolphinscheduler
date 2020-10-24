@@ -47,9 +47,9 @@ public class HttpUtils {
 
 		HttpGet httpget = new HttpGet(url);
 		/** set timeout、request time、socket timeout */
-		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(Constants.HTTP_CONNECT_TIMEOUT)
-				.setConnectionRequestTimeout(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT)
-				.setSocketTimeout(Constants.SOCKET_TIMEOUT)
+		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(PropertyUtils.getInt(Constants.HTTP_CONNECT_TIMEOUT, 60 * 1000))
+				.setConnectionRequestTimeout(PropertyUtils.getInt(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT, 60 * 1000))
+				.setSocketTimeout(PropertyUtils.getInt(Constants.SOCKET_TIMEOUT, 60 * 1000))
 				.setRedirectsEnabled(true)
 				.build();
 		httpget.setConfig(requestConfig);

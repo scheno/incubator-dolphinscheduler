@@ -407,30 +407,8 @@ public class HadoopUtils implements Closeable {
             return null;
         }
 
-        String applicationUrl = getApplicationUrl(applicationId);
+        return ExecutionStatus.SUCCESS;
 
-        String responseContent = HttpUtils.get(applicationUrl);
-
-        JSONObject jsonObject = JSON.parseObject(responseContent);
-        String result = jsonObject.getJSONObject("app").getString("finalStatus");
-
-        switch (result) {
-            case Constants.ACCEPTED:
-                return ExecutionStatus.SUBMITTED_SUCCESS;
-            case Constants.SUCCEEDED:
-                return ExecutionStatus.SUCCESS;
-            case Constants.NEW:
-            case Constants.NEW_SAVING:
-            case Constants.SUBMITTED:
-            case Constants.FAILED:
-                return ExecutionStatus.FAILURE;
-            case Constants.KILLED:
-                return ExecutionStatus.KILL;
-
-            case Constants.RUNNING:
-            default:
-                return ExecutionStatus.RUNNING_EXEUTION;
-        }
     }
 
     /**

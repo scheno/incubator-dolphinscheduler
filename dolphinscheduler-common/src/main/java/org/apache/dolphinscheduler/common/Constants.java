@@ -263,18 +263,18 @@ public final class Constants {
     /**
      * http connect time out
      */
-    public static final int HTTP_CONNECT_TIMEOUT = 60 * 1000;
+    public static final String HTTP_CONNECT_TIMEOUT = "http.connect.timeout";
 
 
     /**
      * http connect request time out
      */
-    public static final int HTTP_CONNECTION_REQUEST_TIMEOUT = 60 * 1000;
+    public static final String HTTP_CONNECTION_REQUEST_TIMEOUT = "http.connection.request.timeout";
 
     /**
      * httpclient soceket time out
      */
-    public static final int SOCKET_TIMEOUT = 60 * 1000;
+    public static final String SOCKET_TIMEOUT = "socket.timeout";
 
     /**
      * http header
