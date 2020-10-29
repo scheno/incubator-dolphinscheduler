@@ -51,9 +51,6 @@ public class HttpUtils {
 
 		HttpGet httpget = new HttpGet(url);
 		/** set timeout、request time、socket timeout */
-		logger.info("httpConnectTimeout:" + httpConnectTimeout);
-		logger.info("httpConnectionRequestTimeOut:" + httpConnectionRequestTimeOut);
-		logger.info("socketTimeout:" + socketTimeout);
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(httpConnectTimeout)
 				.setConnectionRequestTimeout(httpConnectionRequestTimeOut)
 				.setSocketTimeout(socketTimeout)

@@ -28,10 +28,7 @@ import org.apache.dolphinscheduler.common.process.HttpProperty;
 import org.apache.dolphinscheduler.common.process.Property;
 import org.apache.dolphinscheduler.common.task.AbstractParameters;
 import org.apache.dolphinscheduler.common.task.http.HttpParameters;
-import org.apache.dolphinscheduler.common.utils.CollectionUtils;
-import org.apache.dolphinscheduler.common.utils.DateUtils;
-import org.apache.dolphinscheduler.common.utils.ParameterUtils;
-import org.apache.dolphinscheduler.common.utils.StringUtils;
+import org.apache.dolphinscheduler.common.utils.*;
 import org.apache.dolphinscheduler.server.entity.TaskExecutionContext;
 import org.apache.dolphinscheduler.server.utils.ParamUtils;
 import org.apache.dolphinscheduler.server.worker.task.AbstractTask;
@@ -71,7 +68,7 @@ public class HttpTask extends AbstractTask {
     /**
      * Convert mill seconds to second unit
      */
-    protected static final int MAX_CONNECTION_MILLISECONDS = 60000;
+    protected static final int MAX_CONNECTION_MILLISECONDS = PropertyUtils.getInt("max.connection.milliseconds", 60000);
 
     /**
      * application json
