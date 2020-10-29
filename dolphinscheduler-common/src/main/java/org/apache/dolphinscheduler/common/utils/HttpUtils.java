@@ -37,6 +37,10 @@ public class HttpUtils {
 	
 	public static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
 
+	public static final int httpConnectTimeout = PropertyUtils.getInt(Constants.HTTP_CONNECT_TIMEOUT, 600 * 1000);
+	public static final int httpConnectionRequestTimeOut = PropertyUtils.getInt(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT, 600 * 1000);
+	public static final int socketTimeout = PropertyUtils.getInt(Constants.SOCKET_TIMEOUT, 600 * 1000);
+
 	/**
 	 * get http request content
 	 * @param url url
@@ -47,9 +51,12 @@ public class HttpUtils {
 
 		HttpGet httpget = new HttpGet(url);
 		/** set timeout、request time、socket timeout */
-		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(PropertyUtils.getInt(Constants.HTTP_CONNECT_TIMEOUT, 60 * 1000))
-				.setConnectionRequestTimeout(PropertyUtils.getInt(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT, 60 * 1000))
-				.setSocketTimeout(PropertyUtils.getInt(Constants.SOCKET_TIMEOUT, 60 * 1000))
+		logger.info("httpConnectTimeout:" + httpConnectTimeout);
+		logger.info("httpConnectionRequestTimeOut:" + httpConnectionRequestTimeOut);
+		logger.info("socketTimeout:" + socketTimeout);
+		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(httpConnectTimeout)
+				.setConnectionRequestTimeout(httpConnectionRequestTimeOut)
+				.setSocketTimeout(socketTimeout)
 				.setRedirectsEnabled(true)
 				.build();
 		httpget.setConfig(requestConfig);
