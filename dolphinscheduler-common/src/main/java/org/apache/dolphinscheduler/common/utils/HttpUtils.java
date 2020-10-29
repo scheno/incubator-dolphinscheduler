@@ -37,9 +37,9 @@ public class HttpUtils {
 	
 	public static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
 
-	public static final int httpConnectTimeout = PropertyUtils.getInt(Constants.HTTP_CONNECT_TIMEOUT, 600 * 1000);
-	public static final int httpConnectionRequestTimeOut = PropertyUtils.getInt(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT, 600 * 1000);
-	public static final int socketTimeout = PropertyUtils.getInt(Constants.SOCKET_TIMEOUT, 600 * 1000);
+	public static final int httpConnectTimeout = PropertyUtils.getInt(Constants.HTTP_CONNECT_TIMEOUT, 60 * 1000);
+	public static final int httpConnectionRequestTimeOut = PropertyUtils.getInt(Constants.HTTP_CONNECTION_REQUEST_TIMEOUT, 60 * 1000);
+	public static final int socketTimeout = PropertyUtils.getInt(Constants.SOCKET_TIMEOUT, 60 * 1000);
 
 	/**
 	 * get http request content
